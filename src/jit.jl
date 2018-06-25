@@ -260,7 +260,7 @@ function link_libdevice!(mod::LLVM.Module, cap::VersionNumber)
     # find libdevice
     path = if isa(libdevice, Dict)
         # select the most recent & compatible library
-        const vers = keys(CUDAnative.libdevice)
+        vers = keys(CUDAnative.libdevice)
         compat_vers = Set(ver for ver in vers if ver <= cap)
         isempty(compat_vers) && error("No compatible CUDA device library available")
         ver = maximum(compat_vers)
